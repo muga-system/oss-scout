@@ -1,17 +1,129 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="oss-scout"
+  description="Un proyecto pequeño en Astro para aprender islas analizando oportunidades de contribución open source."
+>
+  <section class="hero">
+    <SectionHeader
+      eyebrow="Análisis open source"
+      title="Evaluá issues antes de entrar al ruido."
+      description="oss-scout es un proyecto pequeño hecho con Astro para aprender el modelo de islas construyendo una herramienta simple de análisis para contribuciones open source."
+    />
+
+    <div class="hero__actions">
+      <a class="hero__link" href="/evaluate">Iniciar evaluación</a>
+      <a class="hero__link hero__link--secondary" href="/docs">Leer specs</a>
+    </div>
+  </section>
+
+  <section class="principles" aria-labelledby="principles-title">
+    <h2 id="principles-title" class="principles__title">Principios del proyecto</h2>
+
+    <div class="principles__grid">
+      <article class="principles__card">
+        <h3 class="principles__card-title">Estático primero</h3>
+        <p class="principles__card-text">
+          Astro renderiza la estructura estable. JavaScript aparece solo donde la interacción es necesaria.
+        </p>
+      </article>
+
+      <article class="principles__card">
+        <h3 class="principles__card-title">Alcance chico</h3>
+        <p class="principles__card-text">
+          La primera versión solo evalúa si un issue es buen candidato para una primera contribución.
+        </p>
+      </article>
+
+      <article class="principles__card">
+        <h3 class="principles__card-title">Progreso controlado</h3>
+        <p class="principles__card-text">
+          Cada funcionalidad debe justificar si pertenece a Astro, a una isla o a una versión posterior.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    gap: 32px;
+    padding-block: 32px 72px;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--accent-color);
+    border-radius: 999px;
+    background: var(--accent-color);
+    color: var(--background-color);
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .hero__link--secondary {
+    background: transparent;
+    color: var(--text-color);
+    border-color: var(--border-soft);
+  }
+
+  .principles {
+    display: grid;
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .principles__title {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .principles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .principles__card {
+    padding: 24px;
+    border: 1px solid var(--border-soft);
+    border-radius: 24px;
+    background: var(--surface-color);
+  }
+
+  .principles__card-title {
+    margin: 0 0 12px;
+    font-size: 1rem;
+  }
+
+  .principles__card-text {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 820px) {
+    .principles__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
