@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   ChartColumn,
   CircleQuestionMark,
@@ -8,7 +8,7 @@ import {
   LogOut,
   Settings,
   Target,
-} from '@lucide/astro';
+} from "@lucide/astro";
 ---
 
 <BaseLayout
@@ -16,7 +16,9 @@ import {
   description="Herramienta técnica para evaluar oportunidades de contribución open source."
 >
   <div class="grid h-[calc(100vh-3rem)] grid-cols-[4.5rem_1fr] overflow-hidden">
-    <aside class="flex min-h-0 flex-col border-r border-slate-800 bg-[#02070d]/80">
+    <aside
+      class="flex min-h-0 flex-col border-r border-slate-800 bg-[#02070d]/80"
+    >
       <nav class="flex flex-1 flex-col">
         <a
           href="/"
@@ -78,10 +80,16 @@ import {
       </div>
     </aside>
 
-    <section class="grid min-h-0 grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)] overflow-hidden">
+    <section
+      class="grid min-h-0 grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)] overflow-hidden"
+    >
       <section class="min-h-0 border-r border-slate-800">
-        <header class="flex h-16 items-center justify-between border-b border-slate-800 px-6">
-          <p class="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">
+        <header
+          class="flex h-16 items-center justify-between border-b border-slate-800 px-6 bg-[#02070d8d] backdrop-blur-xs"
+        >
+          <p
+            class="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300"
+          >
             Issues
           </p>
 
@@ -94,58 +102,135 @@ import {
         </header>
 
         <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
-          <div class="h-full border border-slate-800 bg-[#02070d]/70">
-            <div class="grid grid-cols-[96px_1fr_180px_120px] border-b border-slate-800 px-4 py-3 font-mono text-xs uppercase tracking-[0.12em] text-slate-500">
+          <div
+            class="h-full border border-slate-800 bg-[#02070d]/30 backdrop-blur-xs"
+          >
+            <div
+              class="grid grid-cols-[96px_1fr_180px_120px] border-b border-slate-800 px-4 py-3 font-mono text-xs uppercase tracking-[0.12em] text-slate-500"
+            >
               <span>ID</span>
               <span>Título</span>
               <span>Repo</span>
               <span>Estado</span>
             </div>
 
-            <div class="grid h-[calc(100%-2.5rem)] place-items-center px-4 py-12 text-center">
-              <div class="max-w-sm">
-                <p class="font-mono text-sm text-slate-400">
-                  Lista de issues pendiente.
-                </p>
+            <div class="divide-y divide-slate-800">
+              <button
+                type="button"
+                class="grid w-full grid-cols-[96px_1fr_180px_120px] px-4 py-3 text-left text-sm text-slate-300 hover:bg-cyan-500/5"
+              >
+                <span class="font-mono text-cyan-300">#512</span>
+                <span class="truncate"
+                  >Clarificar ejemplo de islands con client:visible</span
+                >
+                <span class="truncate font-mono text-xs text-slate-500"
+                  >withastro/docs</span
+                >
+                <span class="font-mono text-xs text-emerald-300">apto</span>
+              </button>
 
-                <p class="mt-2 text-sm leading-6 text-slate-600">
-                  Acá vamos a construir una tabla estática y después una isla para filtrar o seleccionar.
-                </p>
-              </div>
+              <button
+                type="button"
+                class="grid w-full grid-cols-[96px_1fr_180px_120px] px-4 py-3 text-left text-sm text-slate-300 hover:bg-cyan-500/5"
+              >
+                <span class="font-mono text-cyan-300">#511</span>
+                <span class="truncate"
+                  >Mejorar mensaje de error en configuración</span
+                >
+                <span class="truncate font-mono text-xs text-slate-500"
+                  >withastro/astro</span
+                >
+                <span class="font-mono text-xs text-amber-300">revisar</span>
+              </button>
+
+              <button
+                type="button"
+                class="grid w-full grid-cols-[96px_1fr_180px_120px] px-4 py-3 text-left text-sm text-slate-300 hover:bg-cyan-500/5"
+              >
+                <span class="font-mono text-cyan-300">#510</span>
+                <span class="truncate"
+                  >Actualizar referencia de integración Tailwind</span
+                >
+                <span class="truncate font-mono text-xs text-slate-500"
+                  >withastro/docs</span
+                >
+                <span class="font-mono text-xs text-emerald-300">apto</span>
+              </button>
+
+              <button
+                type="button"
+                class="grid w-full grid-cols-[96px_1fr_180px_120px] px-4 py-3 text-left text-sm text-slate-300 hover:bg-cyan-500/5"
+              >
+                <span class="font-mono text-cyan-300">#509</span>
+                <span class="truncate"
+                  >Investigar comportamiento de hidratación parcial</span
+                >
+                <span class="truncate font-mono text-xs text-slate-500"
+                  >withastro/astro</span
+                >
+                <span class="font-mono text-xs text-rose-300">alto riesgo</span>
+              </button>
+
+              <button
+                type="button"
+                class="grid w-full grid-cols-[96px_1fr_180px_120px] px-4 py-3 text-left text-sm text-slate-300 hover:bg-cyan-500/5"
+              >
+                <span class="font-mono text-cyan-300">#508</span>
+                <span class="truncate"
+                  >Agregar captura faltante en guía de despliegue</span
+                >
+                <span class="truncate font-mono text-xs text-slate-500"
+                  >withastro/docs</span
+                >
+                <span class="font-mono text-xs text-emerald-300">apto</span>
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       <section class="min-h-0">
-        <header class="flex h-16 items-center justify-between border-b border-slate-800 px-6">
+        <header
+          class="flex h-16 items-center justify-between border-b border-slate-800 px-6 bg-[#02070d8d] backdrop-blur-xs"
+        >
           <div class="flex items-center gap-3">
-            <p class="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">
+            <p
+              class="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300"
+            >
               Evaluación
             </p>
 
-            <span class="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500">
+            <span
+              class="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500"
+            >
               sin selección
             </span>
           </div>
         </header>
 
         <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
-          <div class="h-full border border-slate-800 bg-[#02070d]/70">
+          <div
+            class="h-full border border-slate-800 bg-[#02070d]/30 backdrop-blur-xs"
+          >
             <div class="border-b border-slate-800 px-4 py-3">
-              <p class="font-mono text-xs uppercase tracking-[0.12em] text-slate-500">
+              <p
+                class="font-mono text-xs uppercase tracking-[0.12em] text-slate-500"
+              >
                 Checklist
               </p>
             </div>
 
-            <div class="grid h-[calc(100%-2.5rem)] place-items-center px-4 py-12 text-center">
+            <div
+              class="grid h-[calc(100%-2.5rem)] place-items-center px-4 py-12 text-center"
+            >
               <div class="max-w-sm">
                 <p class="font-mono text-sm text-slate-400">
                   Ningún issue seleccionado.
                 </p>
 
                 <p class="mt-2 text-sm leading-6 text-slate-600">
-                  Este panel va a mostrar criterios, puntaje y resultado de evaluación.
+                  Este panel va a mostrar criterios, puntaje y resultado de
+                  evaluación.
                 </p>
               </div>
             </div>
