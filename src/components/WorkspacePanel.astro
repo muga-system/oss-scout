@@ -1,0 +1,20 @@
+---
+import PanelHeader from "./PanelHeader.astro";
+
+interface Props {
+  title: string;
+  withRightBorder?: boolean;
+}
+
+const { title, withRightBorder = false } = Astro.props;
+---
+
+<section class:list={["min-h-0", withRightBorder && "border-r border-slate-800"]}>
+  <PanelHeader title={title}>
+    <slot name="actions" />
+  </PanelHeader>
+
+  <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
+    <slot />
+  </div>
+</section>

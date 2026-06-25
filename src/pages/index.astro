@@ -2,8 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import EvaluationPanel from "../components/EvaluationPanel.astro";
 import IssueTable from "../components/IssueTable.astro";
-import PanelHeader from "../components/PanelHeader.astro";
 import WorkspaceLayout from "../components/WorkspaceLayout.astro";
+import WorkspacePanel from "../components/WorkspacePanel.astro";
 ---
 
 <BaseLayout
@@ -11,33 +11,27 @@ import WorkspaceLayout from "../components/WorkspaceLayout.astro";
   description="Herramienta técnica para evaluar oportunidades de contribución open source."
 >
   <WorkspaceLayout>
-    <section class="min-h-0 border-r border-slate-800">
-      <PanelHeader title="Issues">
-        <button
-          type="button"
-          class="border border-cyan-500/50 px-3 py-1.5 font-mono text-xs text-cyan-300 hover:bg-cyan-500/10"
-        >
-          Filtros
-        </button>
-      </PanelHeader>
+    <WorkspacePanel title="Issues" withRightBorder>
+      <button
+        slot="actions"
+        type="button"
+        class="border border-cyan-500/50 px-3 py-1.5 font-mono text-xs text-cyan-300 hover:bg-cyan-500/10"
+      >
+        Filtros
+      </button>
 
-      <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
-        <IssueTable />
-      </div>
-    </section>
+      <IssueTable />
+    </WorkspacePanel>
 
-    <section class="min-h-0">
-      <PanelHeader title="Evaluación">
-        <span
-          class="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500"
-        >
-          sin selección
-        </span>
-      </PanelHeader>
+    <WorkspacePanel title="Evaluación">
+      <span
+        slot="actions"
+        class="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500"
+      >
+        sin selección
+      </span>
 
-      <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
-        <EvaluationPanel />
-      </div>
-    </section>
+      <EvaluationPanel />
+    </WorkspacePanel>
   </WorkspaceLayout>
 </BaseLayout>
