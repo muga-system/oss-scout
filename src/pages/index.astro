@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import IssueTable from "../components/IssueTable.astro";
+import EvaluationPanel from "../components/EvaluationPanel.astro";
 import {
   ChartColumn,
   CircleQuestionMark,
@@ -127,115 +128,7 @@ import {
         </header>
 
         <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
-          <div
-            class="h-full border border-slate-800 bg-[#02070d]/30 backdrop-blur-xs"
-          >
-            <div class="border-b border-slate-800 px-4 py-3">
-              <p
-                class="font-mono text-xs uppercase tracking-[0.12em] text-slate-500"
-              >
-                Checklist
-              </p>
-            </div>
-
-            <div class="divide-y divide-slate-800">
-              <div
-                class="grid grid-cols-[1fr_72px_80px] px-4 py-3 font-mono text-xs uppercase tracking-[0.12em] text-slate-500"
-              >
-                <span>Criterio</span>
-                <span>Peso</span>
-                <span>Puntaje</span>
-              </div>
-
-              <div
-                class="grid grid-cols-[1fr_72px_80px] items-center px-4 py-3 text-sm"
-              >
-                <span class="text-slate-300">Alcance claro</span>
-                <span class="font-mono text-xs text-slate-500">20%</span>
-                <span class="font-mono text-xs text-cyan-300">4 / 5</span>
-              </div>
-
-              <div
-                class="grid grid-cols-[1fr_72px_80px] items-center px-4 py-3 text-sm"
-              >
-                <span class="text-slate-300">Contexto suficiente</span>
-                <span class="font-mono text-xs text-slate-500">15%</span>
-                <span class="font-mono text-xs text-cyan-300">3 / 5</span>
-              </div>
-
-              <div
-                class="grid grid-cols-[1fr_72px_80px] items-center px-4 py-3 text-sm"
-              >
-                <span class="text-slate-300">Complejidad baja</span>
-                <span class="font-mono text-xs text-slate-500">20%</span>
-                <span class="font-mono text-xs text-cyan-300">4 / 5</span>
-              </div>
-
-              <div
-                class="grid grid-cols-[1fr_72px_80px] items-center px-4 py-3 text-sm"
-              >
-                <span class="text-slate-300">No toca core</span>
-                <span class="font-mono text-xs text-slate-500">15%</span>
-                <span class="font-mono text-xs text-cyan-300">5 / 5</span>
-              </div>
-
-              <div
-                class="grid grid-cols-[1fr_72px_80px] items-center px-4 py-3 text-sm"
-              >
-                <span class="text-slate-300">Actividad reciente</span>
-                <span class="font-mono text-xs text-slate-500">15%</span>
-                <span class="font-mono text-xs text-cyan-300">3 / 5</span>
-              </div>
-
-              <div
-                class="grid grid-cols-[1fr_72px_80px] items-center px-4 py-3 text-sm"
-              >
-                <span class="text-slate-300">Buen primer aporte</span>
-                <span class="font-mono text-xs text-slate-500">15%</span>
-                <span class="font-mono text-xs text-cyan-300">4 / 5</span>
-              </div>
-            </div>
-
-            <div class="border-t border-slate-800 p-4">
-              <div class="grid grid-cols-2 border border-slate-800">
-                <div class="border-r border-slate-800 p-4">
-                  <p
-                    class="font-mono text-xs uppercase tracking-[0.12em] text-slate-500"
-                  >
-                    Puntaje
-                  </p>
-
-                  <p class="mt-3 font-mono text-3xl text-cyan-300">
-                    76
-                    <span class="text-base text-slate-600">/ 100</span>
-                  </p>
-                </div>
-
-                <div class="p-4">
-                  <p
-                    class="font-mono text-xs uppercase tracking-[0.12em] text-slate-500"
-                  >
-                    Resultado
-                  </p>
-
-                  <p class="mt-3 font-mono text-3xl text-emerald-300">Apto</p>
-                </div>
-              </div>
-
-              <div class="border-x border-b border-slate-800 p-2">
-                <p
-                  class="font-mono text-xs uppercase tracking-[0.12em] text-slate-500"
-                >
-                  Nota
-                </p>
-
-                <p class="mt-3 text-xs leading-6 text-slate-400">
-                  Candidato razonable para una primera contribución. Conviene
-                  revisar comentarios recientes antes de tomarlo.
-                </p>
-              </div>
-            </div>
-          </div>
+          <EvaluationPanel />
         </div>
       </section>
     </section>
