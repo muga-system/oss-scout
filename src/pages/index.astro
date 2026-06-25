@@ -1,49 +1,43 @@
 ---
-import AppRail from "../components/AppRail.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import EvaluationPanel from "../components/EvaluationPanel.astro";
 import IssueTable from "../components/IssueTable.astro";
 import PanelHeader from "../components/PanelHeader.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import WorkspaceLayout from "../components/WorkspaceLayout.astro";
 ---
 
 <BaseLayout
   title="oss-scout"
   description="Herramienta técnica para evaluar oportunidades de contribución open source."
 >
-  <div class="grid h-[calc(100vh-3rem)] grid-cols-[4.5rem_1fr] overflow-hidden">
-    <AppRail />
+  <WorkspaceLayout>
+    <section class="min-h-0 border-r border-slate-800">
+      <PanelHeader title="Issues">
+        <button
+          type="button"
+          class="border border-cyan-500/50 px-3 py-1.5 font-mono text-xs text-cyan-300 hover:bg-cyan-500/10"
+        >
+          Filtros
+        </button>
+      </PanelHeader>
 
-    <section
-      class="grid min-h-0 grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)] overflow-hidden"
-    >
-      <section class="min-h-0 border-r border-slate-800">
-        <PanelHeader title="Issues">
-          <button
-            type="button"
-            class="border border-cyan-500/50 px-3 py-1.5 font-mono text-xs text-cyan-300 hover:bg-cyan-500/10"
-          >
-            Filtros
-          </button>
-        </PanelHeader>
-
-        <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
-          <IssueTable />
-        </div>
-      </section>
-
-      <section class="min-h-0">
-        <PanelHeader title="Evaluación">
-          <span
-            class="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500"
-          >
-            sin selección
-          </span>
-        </PanelHeader>
-
-        <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
-          <EvaluationPanel />
-        </div>
-      </section>
+      <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
+        <IssueTable />
+      </div>
     </section>
-  </div>
+
+    <section class="min-h-0">
+      <PanelHeader title="Evaluación">
+        <span
+          class="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500"
+        >
+          sin selección
+        </span>
+      </PanelHeader>
+
+      <div class="h-[calc(100%-4rem)] overflow-hidden p-6">
+        <EvaluationPanel />
+      </div>
+    </section>
+  </WorkspaceLayout>
 </BaseLayout>

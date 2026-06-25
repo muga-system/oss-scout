@@ -1,0 +1,13 @@
+---
+import AppRail from "./AppRail.astro";
+---
+
+<div class="grid h-[calc(100vh-3rem)] grid-cols-[4.5rem_1fr] overflow-hidden">
+  <AppRail />
+
+  <section
+    class="grid min-h-0 grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)] overflow-hidden"
+  >
+    <slot />
+  </section>
+</div>
