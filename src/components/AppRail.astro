@@ -1,0 +1,86 @@
+---
+import {
+  ChartColumn,
+  CircleQuestionMark,
+  Grid2x2,
+  ListChecks,
+  LogOut,
+  Settings,
+  Target,
+} from "@lucide/astro";
+
+const navItems = [
+  {
+    href: "/",
+    label: "Vista general",
+    icon: Grid2x2,
+    active: true,
+  },
+  {
+    href: "/evaluate",
+    label: "Evaluación",
+    icon: ListChecks,
+    active: false,
+  },
+  {
+    href: "/criteria",
+    label: "Criterios",
+    icon: Target,
+    active: false,
+  },
+  {
+    href: "/stats",
+    label: "Estadísticas",
+    icon: ChartColumn,
+    active: false,
+  },
+  {
+    href: "/settings",
+    label: "Configuración",
+    icon: Settings,
+    active: false,
+  },
+];
+---
+
+<aside class="flex min-h-0 flex-col border-r border-slate-800 bg-[#02070d]/80">
+  <nav class="flex flex-1 flex-col">
+    {
+      navItems.map((item) => {
+        const Icon = item.icon;
+
+        return (
+          <a
+            href={item.href}
+            aria-label={item.label}
+            class={`grid h-16 place-items-center border-b border-slate-800 ${
+              item.active
+                ? "text-cyan-300"
+                : "text-slate-400 hover:text-cyan-300"
+            }`}
+          >
+            <Icon size={22} stroke-width={1.75} />
+          </a>
+        );
+      })
+    }
+  </nav>
+
+  <div class="border-t border-slate-800">
+    <a
+      href="/help"
+      aria-label="Ayuda"
+      class="grid h-14 place-items-center border-b border-slate-800 text-slate-500 hover:text-cyan-300"
+    >
+      <CircleQuestionMark size={20} stroke-width={1.75} />
+    </a>
+
+    <button
+      type="button"
+      aria-label="Salir"
+      class="grid h-14 w-full place-items-center text-slate-500 hover:text-cyan-300"
+    >
+      <LogOut size={20} stroke-width={1.75} />
+    </button>
+  </div>
+</aside>
