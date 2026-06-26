@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import EvaluationPanel from "../components/EvaluationPanel.astro";
+import IssueEvaluatorIsland from "../islands/IssueEvaluatorIsland";
 import IssueTable from "../components/IssueTable.astro";
 import WorkspaceLayout from "../components/WorkspaceLayout.astro";
 import WorkspacePanel from "../components/WorkspacePanel.astro";
@@ -31,7 +31,7 @@ import WorkspacePanel from "../components/WorkspacePanel.astro";
         sin selección
       </span>
 
-      <EvaluationPanel />
+      <IssueEvaluatorIsland client:load />
     </WorkspacePanel>
   </WorkspaceLayout>
 </BaseLayout>
