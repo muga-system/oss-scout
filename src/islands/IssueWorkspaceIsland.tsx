@@ -1,53 +1,6 @@
 import { useState } from "react";
+import { issues, statusClassByStatus } from "../data/issues";
 import IssueEvaluatorIsland from "./IssueEvaluatorIsland";
-
-type IssueStatus = "apto" | "revisar" | "alto riesgo";
-
-type Issue = {
-  id: string;
-  title: string;
-  repo: string;
-  status: IssueStatus;
-};
-
-const issues: Issue[] = [
-  {
-    id: "#512",
-    title: "Clarificar ejemplo de islands con client:visible",
-    repo: "withastro/docs",
-    status: "apto",
-  },
-  {
-    id: "#511",
-    title: "Mejorar mensaje de error en configuración",
-    repo: "withastro/astro",
-    status: "revisar",
-  },
-  {
-    id: "#510",
-    title: "Actualizar referencia de integración Tailwind",
-    repo: "withastro/docs",
-    status: "apto",
-  },
-  {
-    id: "#509",
-    title: "Investigar comportamiento de hidratación parcial",
-    repo: "withastro/astro",
-    status: "alto riesgo",
-  },
-  {
-    id: "#508",
-    title: "Agregar captura faltante en guía de despliegue",
-    repo: "withastro/docs",
-    status: "apto",
-  },
-];
-
-const statusClassByStatus: Record<IssueStatus, string> = {
-  apto: "text-emerald-300",
-  revisar: "text-amber-300",
-  "alto riesgo": "text-rose-300",
-};
 
 export default function IssueWorkspaceIsland() {
   const [selectedIssueId, setSelectedIssueId] = useState(issues[0].id);
@@ -104,9 +57,8 @@ export default function IssueWorkspaceIsland() {
                     </span>
 
                     <span
-                      className={`font-mono text-xs ${
-                        statusClassByStatus[issue.status]
-                      }`}
+                      className={`font-mono text-xs ${statusClassByStatus[issue.status]
+                        }`}
                     >
                       {issue.status}
                     </span>
