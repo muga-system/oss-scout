@@ -1,9 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import IssueEvaluatorIsland from "../islands/IssueEvaluatorIsland";
-import IssueTable from "../components/IssueTable.astro";
+import IssueWorkspaceIsland from "../islands/IssueWorkspaceIsland";
 import WorkspaceLayout from "../components/WorkspaceLayout.astro";
-import WorkspacePanel from "../components/WorkspacePanel.astro";
 ---
 
 <BaseLayout
@@ -11,27 +9,6 @@ import WorkspacePanel from "../components/WorkspacePanel.astro";
   description="Herramienta técnica para evaluar oportunidades de contribución open source."
 >
   <WorkspaceLayout>
-    <WorkspacePanel title="Issues" withRightBorder>
-      <button
-        slot="actions"
-        type="button"
-        class="border border-cyan-500/50 px-3 py-1.5 font-mono text-xs text-cyan-300 hover:bg-cyan-500/10"
-      >
-        Filtros
-      </button>
-
-      <IssueTable />
-    </WorkspacePanel>
-
-    <WorkspacePanel title="Evaluación">
-      <span
-        slot="actions"
-        class="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500"
-      >
-        sin selección
-      </span>
-
-      <IssueEvaluatorIsland client:load />
-    </WorkspacePanel>
+    <IssueWorkspaceIsland client:load />
   </WorkspaceLayout>
 </BaseLayout>
