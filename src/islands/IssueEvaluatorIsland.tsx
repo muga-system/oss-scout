@@ -3,44 +3,13 @@ import {
   initialEvaluationCriteria,
   type EvaluationCriterion,
 } from "../data/evaluationCriteria";
-
-function getResult(totalScore: number) {
-  if (totalScore >= 75) {
-    return {
-      label: "Apto",
-      className: "text-emerald-300",
-      note: "Candidato razonable para una primera contribución. Conviene revisar comentarios recientes antes de tomarlo.",
-    };
-  }
-
-  if (totalScore >= 50) {
-    return {
-      label: "Revisar",
-      className: "text-amber-300",
-      note: "Puede servir, pero requiere revisar alcance, actividad y complejidad antes de avanzar.",
-    };
-  }
-
-  return {
-    label: "Descartar",
-    className: "text-rose-300",
-    note: "No parece una buena primera contribución. Conviene buscar un issue con menor riesgo.",
-  };
-}
-
-function calculateTotalScore(criteria: EvaluationCriterion[]) {
-  return Math.round(
-    criteria.reduce((total, criterion) => {
-      return total + (criterion.score / 5) * criterion.weight;
-    }, 0),
-  );
-}
+import { calculateTotalScore, getEvaluationResult } from "../lib/evaluation";
 
 export default function IssueEvaluatorIsland() {
   const [criteria, setCriteria] = useState(initialEvaluationCriteria);
 
   const totalScore = calculateTotalScore(criteria);
-  const result = getResult(totalScore);
+  const result = getEvaluationResult(totalScore);
 
   function updateCriterionScore(criterionId: string, nextScore: number) {
     setCriteria((currentCriteria) => {
