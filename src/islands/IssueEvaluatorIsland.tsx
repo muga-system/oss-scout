@@ -1,50 +1,8 @@
 import { useState } from "react";
-
-type Criterion = {
-  id: string;
-  label: string;
-  weight: number;
-  score: number;
-};
-
-const initialCriteria: Criterion[] = [
-  {
-    id: "scope",
-    label: "Alcance claro",
-    weight: 20,
-    score: 4,
-  },
-  {
-    id: "context",
-    label: "Contexto suficiente",
-    weight: 15,
-    score: 3,
-  },
-  {
-    id: "complexity",
-    label: "Complejidad baja",
-    weight: 20,
-    score: 4,
-  },
-  {
-    id: "core",
-    label: "No toca core",
-    weight: 15,
-    score: 5,
-  },
-  {
-    id: "activity",
-    label: "Actividad reciente",
-    weight: 15,
-    score: 3,
-  },
-  {
-    id: "firstContribution",
-    label: "Buen primer aporte",
-    weight: 15,
-    score: 4,
-  },
-];
+import {
+  initialEvaluationCriteria,
+  type EvaluationCriterion,
+} from "../data/evaluationCriteria";
 
 function getResult(totalScore: number) {
   if (totalScore >= 75) {
@@ -70,7 +28,7 @@ function getResult(totalScore: number) {
   };
 }
 
-function calculateTotalScore(criteria: Criterion[]) {
+function calculateTotalScore(criteria: EvaluationCriterion[]) {
   return Math.round(
     criteria.reduce((total, criterion) => {
       return total + (criterion.score / 5) * criterion.weight;
@@ -79,7 +37,7 @@ function calculateTotalScore(criteria: Criterion[]) {
 }
 
 export default function IssueEvaluatorIsland() {
-  const [criteria, setCriteria] = useState(initialCriteria);
+  const [criteria, setCriteria] = useState(initialEvaluationCriteria);
 
   const totalScore = calculateTotalScore(criteria);
   const result = getResult(totalScore);
