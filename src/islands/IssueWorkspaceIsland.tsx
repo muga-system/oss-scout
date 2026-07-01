@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { issues } from "../data/issues";
-import IssueEvaluatorIsland from "./IssueEvaluatorIsland";
 import IssueList from "./IssueList";
+import SelectedIssuePanel from "./SelectedIssuePanel";
 import WorkspaceSectionHeader from "./WorkspaceSectionHeader";
 
 export default function IssueWorkspaceIsland() {
@@ -30,16 +30,7 @@ export default function IssueWorkspaceIsland() {
         </div>
       </section>
 
-      <section className="min-h-0">
-        <WorkspaceSectionHeader title="Evaluación">
-          <span className="border border-slate-800 px-2 py-1 font-mono text-xs text-slate-500">
-            {selectedIssue?.id ?? "sin selección"}
-          </span>
-        </WorkspaceSectionHeader>
-        <div className="h-[calc(100%-4rem)] overflow-hidden p-6">
-          <IssueEvaluatorIsland />
-        </div>
-      </section>
+      <SelectedIssuePanel issue={selectedIssue} />
     </>
   );
 }
