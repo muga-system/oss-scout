@@ -156,3 +156,18 @@ Se montó con:
 
 ```astro
 <IssueEvaluatorIsland client:load />
+
+
+## Actualización: isla operativa y selección de issues
+
+Después de crear la primera isla interactiva, la arquitectura cambió.
+
+La primera versión tenía esta separación:
+
+```txt
+Astro
+├─ tabla estática de issues
+└─ panel estático de estructura
+
+React
+└─ IssueEvaluatorIsland
