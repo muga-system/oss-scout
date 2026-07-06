@@ -1,3 +1,4 @@
+import type { EvaluationCriterion } from "../data/evaluationCriteria";
 import type { Issue } from "../data/issues";
 import { statusClassByStatus } from "../data/issues";
 import IssueEvaluatorIsland from "./IssueEvaluatorIsland";
@@ -5,9 +6,15 @@ import WorkspaceSectionHeader from "./WorkspaceSectionHeader";
 
 type SelectedIssuePanelProps = {
   issue?: Issue;
+  criteria: EvaluationCriterion[];
+  onCriteriaChange: (criteria: EvaluationCriterion[]) => void;
 };
 
-export default function SelectedIssuePanel({ issue }: SelectedIssuePanelProps) {
+export default function SelectedIssuePanel({
+  issue,
+  criteria,
+  onCriteriaChange,
+}: SelectedIssuePanelProps) {
   return (
     <section className="min-h-0">
       <WorkspaceSectionHeader title="Evaluación">
@@ -50,7 +57,11 @@ export default function SelectedIssuePanel({ issue }: SelectedIssuePanelProps) {
         </div>
 
         <div className="min-h-0 overflow-hidden">
-          <IssueEvaluatorIsland issueId={issue?.id} />
+          <IssueEvaluatorIsland
+            issueId={issue?.id}
+            criteria={criteria}
+            onCriteriaChange={onCriteriaChange}
+          />
         </div>
       </div>
     </section>
