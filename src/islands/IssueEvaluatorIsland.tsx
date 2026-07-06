@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   initialEvaluationCriteria,
   type EvaluationCriterion,
 } from "../data/evaluationCriteria";
 import { calculateTotalScore, getEvaluationResult } from "../lib/evaluation";
 
-export default function IssueEvaluatorIsland() {
+type IssueEvaluatorIslandProps = {
+  issueId?: string;
+};
+
+export default function IssueEvaluatorIsland({
+  issueId,
+}: IssueEvaluatorIslandProps) {
   const [criteria, setCriteria] = useState(initialEvaluationCriteria);
+
+  useEffect(() => {
+    setCriteria(initialEvaluationCriteria);
+  }, [issueId]);
 
   const totalScore = calculateTotalScore(criteria);
   const result = getEvaluationResult(totalScore);
@@ -42,12 +52,14 @@ export default function IssueEvaluatorIsland() {
             <span>Puntaje</span>
           </div>
 
-          {criteria.map((criterion) => (
+          {criteria.map((criterion: EvaluationCriterion) => (
             <div
               key={criterion.id}
               className="grid grid-cols-[1fr_56px_168px] items-center px-4 py-2.5 text-sm"
             >
-              <span className="truncate text-slate-300">{criterion.label}</span>
+              <span className="truncate text-slate-300">
+                {criterion.label}
+              </span>
 
               <span className="font-mono text-xs text-slate-500">
                 {criterion.weight}%
@@ -106,7 +118,7 @@ export default function IssueEvaluatorIsland() {
           </div>
         </div>
 
-        <div className="min-h-26 border-x border-b border-slate-800 p-3">
+        <div className="min-h-28 border-x border-b border-slate-800 p-3">
           <p className="font-mono text-xs uppercase tracking-[0.12em] text-slate-500">
             Nota
           </p>

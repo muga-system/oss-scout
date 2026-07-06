@@ -50,7 +50,7 @@ export default function SelectedIssuePanel({ issue }: SelectedIssuePanelProps) {
         </div>
 
         <div className="min-h-0 overflow-hidden">
-          <IssueEvaluatorIsland />
+          <IssueEvaluatorIsland issueId={issue?.id} />
         </div>
       </div>
     </section>
