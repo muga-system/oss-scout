@@ -7,33 +7,50 @@ import { calculateTotalScore, getEvaluationResult } from "../lib/evaluation";
 
 type IssueEvaluatorIslandProps = {
   issueId?: string;
+  criteria?: EvaluationCriterion[];
+  onCriteriaChange?: (criteria: EvaluationCriterion[]) => void;
 };
 
 export default function IssueEvaluatorIsland({
   issueId,
+  criteria,
+  onCriteriaChange,
 }: IssueEvaluatorIslandProps) {
-  const [criteria, setCriteria] = useState(initialEvaluationCriteria);
+  const [localCriteria, setLocalCriteria] = useState(
+    initialEvaluationCriteria,
+  );
+
+  const activeCriteria = criteria ?? localCriteria;
 
   useEffect(() => {
-    setCriteria(initialEvaluationCriteria);
-  }, [issueId]);
+    if (criteria) {
+      return;
+    }
 
-  const totalScore = calculateTotalScore(criteria);
+    setLocalCriteria(initialEvaluationCriteria);
+  }, [issueId, criteria]);
+
+  const totalScore = calculateTotalScore(activeCriteria);
   const result = getEvaluationResult(totalScore);
 
   function updateCriterionScore(criterionId: string, nextScore: number) {
-    setCriteria((currentCriteria) => {
-      return currentCriteria.map((criterion) => {
-        if (criterion.id !== criterionId) {
-          return criterion;
-        }
+    const nextCriteria = activeCriteria.map((criterion) => {
+      if (criterion.id !== criterionId) {
+        return criterion;
+      }
 
-        return {
-          ...criterion,
-          score: nextScore,
-        };
-      });
+      return {
+        ...criterion,
+        score: nextScore,
+      };
     });
+
+    if (onCriteriaChange) {
+      onCriteriaChange(nextCriteria);
+      return;
+    }
+
+    setLocalCriteria(nextCriteria);
   }
 
   return (
@@ -52,7 +69,7 @@ export default function IssueEvaluatorIsland({
             <span>Puntaje</span>
           </div>
 
-          {criteria.map((criterion: EvaluationCriterion) => (
+          {activeCriteria.map((criterion: EvaluationCriterion) => (
             <div
               key={criterion.id}
               className="grid grid-cols-[1fr_56px_168px] items-center px-4 py-2.5 text-sm"
